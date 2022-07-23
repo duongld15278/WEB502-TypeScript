@@ -1,5 +1,6 @@
-import { cate, catebyId } from "../../../api/category";
-import { Listbycate, Read } from "../../../api/product";
+import { cate } from "../../../api/category";
+import { UploadFile } from "../../../api/image";
+import { Read, Update } from "../../../api/product";
 import AdminHeader from "../../../components/Header/Admin"
 import Sidebar from "../../../components/Sidebar"
 import Product from "../../../model/product";
@@ -13,89 +14,85 @@ const EditProductPage = {
 
         const itemProd: Product = getProd.data
         const idbyProd = itemProd.category
-        const cateId = await catebyId(idbyProd)
-        console.log(itemProd.image);
         return /*html*/`
         ${AdminHeader.render()}
         <div class="flex divide-x h-screen">
-            <div class="w-[250px] flex-none mt-4 ml-5">
-                ${Sidebar.render()}
-            </div>
-            <div class="w-full bg-gradient-to-r from-gray-100">
-            <div id="form-add" class="px-5 pt-5 h-screen">
-              <h2 class="text-2xl font-medium mb-5">Sửa sản phẩm</h2>
-              <div class="flex justify-evenly">
-                <div class="bg-white w-2/5 h-fit mr-10 rounded border-b-2 border-b-gray-200">
-                  <div class="flex flex-col justify-center items-center h-[350px] rounded border-b-2 border-b-gray-200">
-                    <div>
-                      <img src="${itemProd.image}" class="h-[300px] mb-2" id="imgPreview" />
-                    </div>
-                    <div class="text-red-500" id="erImg"></div>
-                    <div class="">
-                      <input type="file" accept=".jpg, .jpeg .png, .svg, .webp" class="" id="img-post" name="img-post">
-                    </div>
-        
-                  </div>
-                  <div class="">
-                    <label for="" class="mx-2">Mô tả ngắn</label>
-                    <textarea id="shortDesc" class="w-full p-2">${itemProd.shortDesc}</textarea>
-                    <div class="text-red-500" id="erShort"></div>
-                  </div>
-                </div>
-                <div class=" w-3/5 col-span-2">
-                  <h2 class="text-xl border-b-2 leading-loose	">Thông tin sản phẩm</h2>
-                  <div class="flex flex-col mt-4 ">
-                    <label for="">Tên sản phẩm:</label>
-                    <input id="name" type="text" placeholder="Tên sản phẩm" value="${itemProd.name}" class="w-full border rounded-md px-2 h-10" 
-                    <div class="text-red-500" id="erName"></div>
-                  </div>
-        
-                  <div class="flex ">
-                    <div class="flex flex-col ">
-                      <label for="">Giá gốc:</label>
-                      <input id="originalPrice" type="text" placeholder="Giá gốc" value="${itemProd.originalPrice}" class="w-full border rounded-md px-2 h-10">
-                      <div class="text-red-500" id="erPrice"></div>
-                    </div>
-        
-                    <div class="flex flex-col ">
-                      <label for="">Giá khuyến mãi:</label>
-                      <input id="saleOffPrice" type="text" placeholder="Giá khuyến mãi " value="${itemProd.saleOffPrice}"
-                        class="w-full border rounded-md px-2 h-10">
-                    </div>
-        
-                  </div>
-                  <div class="flex flex-col ">
-                    <label for="">Danh mục:</label>
-                    <select name="" id="category" class="w-full border rounded-md px-2 h-10">
-                        ${listcate.data.map((item: any) => `
-                            <option value="${item.id}">${item.name}</option>
-                        `)}
-                    </select>
-                  </div> <br>
-                  <div class="">
-                    <label for="">Đặc điểm nổi bật:</label>
-                    <textarea id="feature" class="w-full border rounded-md px-2 h-20">${itemProd.feature}</textarea>
-                    <div class="text-red-500" id="erFeature"></div>
-                  </div> <br>
-        
-                  <div class="">
-                    <label for="">Mô tả dài:</label>
-                    <textarea id="longDesc" class="w-full border rounded-md px-2 h-20">${itemProd.longDesc}</textarea>
-                    <div class="text-red-500" id="erLong"></div>
-                  </div>
-        
-        
-                  <button class="border rounded-md text-white bg-[#00B0D7] w-[120px] h-[60px] mt-5" type="submit"
-                    id="btnAdd">Sửa</button>
-                </div>
+    <div class="w-[250px] flex-none mt-4 ml-5">
+      ${Sidebar.render()}
+    </div>
+    <div class="w-full bg-gradient-to-r from-gray-100">
+      <div id="form-add" class="px-5 pt-5 h-screen">
+        <h2 class="text-2xl font-medium mb-5">Sửa sản phẩm</h2>
+        <div class="flex justify-evenly">
+          <div class="bg-white w-2/5 h-fit mr-10 rounded border-b-2 border-b-gray-200">
+            <div class="flex flex-col justify-center items-center h-[350px] rounded border-b-2 border-b-gray-200">
+              <div>
+                <img src="${itemProd.image}" class="h-[300px] mb-2" id="imgPreview" />
               </div>
+              <div class="text-red-500" id="erImg"></div>
+              <div class="">
+                <input type="file" accept=".jpg, .jpeg .png, .svg, .webp" class="" id="img-post" name="img-post">
+              </div>
+
+            </div>
+            <div class="">
+              <label for="" class="mx-2">Mô tả ngắn</label>
+              <textarea id="shortDesc" class="w-full p-2">${itemProd.shortDesc}</textarea>
+              <div class="text-red-500" id="erShort"></div>
             </div>
           </div>
-            
+          <div class=" w-3/5 col-span-2">
+            <h2 class="text-xl border-b-2 leading-loose	">Thông tin sản phẩm</h2>
+            <div class="flex flex-col mt-4 ">
+              <label for="">Tên sản phẩm:</label>
+              <input id="name" type="text" placeholder="Tên sản phẩm" value="${itemProd.name}" class="w-full border rounded-md px-2 h-10"> 
+              <div class="text-red-500" id="erName"></div>
+            </div>
+
+          <div class="flex ">
+            <div class="flex flex-col ">
+              <label for="">Giá gốc:</label>
+              <input id="originalPrice" type="text" placeholder="Giá gốc" value="${itemProd.originalPrice}"
+                class="w-full border rounded-md px-2 h-10">
+              <div class="text-red-500" id="erPrice"></div>
+            </div>
+
+            <div class="flex flex-col ">
+              <label for="">Giá khuyến mãi:</label>
+              <input id="saleOffPrice" type="text" placeholder="Giá khuyến mãi " value="${itemProd.saleOffPrice}"
+                class="w-full border rounded-md px-2 h-10">
+            </div>
+
+          </div>
+          <div class="flex flex-col ">
+            <label for="">Danh mục:</label>
+            <select name="" id="category" class="w-full border rounded-md px-2 h-10">
+            <option value="${itemProd.category}"></option>
+              ${listcate.data.map((item: any) => `
+              <option value="${item.id}">${item.name}</option>
+              `)}
+            </select>
+          </div> <br>
+          <div class="">
+            <label for="">Đặc điểm nổi bật:</label>
+            <textarea id="feature" class="w-full border rounded-md px-2 h-20">${itemProd.feature}</textarea>
+            <div class="text-red-500" id="erFeature"></div>
+          </div> <br>
+
+          <div class="">
+            <label for="">Mô tả dài:</label>
+            <textarea id="longDesc" class="w-full border rounded-md px-2 h-20">${itemProd.longDesc}</textarea>
+            <div class="text-red-500" id="erLong"></div>
+          </div>
+
+
+          <button class="border rounded-md text-white bg-[#00B0D7] w-[120px] h-[60px] mt-5" type="submit" id="btnAdd">Sửa</button>
         </div>
+      </div>
+  </div>
         `
     },
-    afterRender: async () => {
+    afterRender: async (id) => {
         const formAdd = document.querySelector('#btnAdd');
         const imgPost = document.querySelector('#img-post');
         const imgPreview = document.querySelector('#imgPreview');
@@ -146,11 +143,12 @@ const EditProductPage = {
                 longDesc: longDesc,
                 shortDesc: shortDesc,
                 feature: feature,
-                category: category
+                category: category,
+                id:id
               }
-              const data = await AddProduct(product)
+              const data = await Update(product)
               if (data) {
-                alert("Thêm thành công")
+                alert("Sửa thành công")
               }
               window.location.href = '/admin';
             }
