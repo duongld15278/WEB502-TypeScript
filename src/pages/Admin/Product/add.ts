@@ -99,6 +99,9 @@ const AddProductPage = {
         const erFeature = document.querySelector("#erFeature");
         const erLong = document.querySelector("#erLong");
 
+        imgPost.addEventListener('change', function(e){
+          imgPreview.src = URL.createObjectURL(e.target.files[0])
+        });
         
         formAdd?.addEventListener('click', async function (e) {
             const name = document.querySelector('#name')?.value

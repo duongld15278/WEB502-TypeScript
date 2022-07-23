@@ -25,14 +25,25 @@
     },
     {
       "image": "http://res.cloudinary.com/dqsykuvvc/image/upload/v1658544452/pbt3hz1spcd7e5j8jbac.jpg",
-      "name": "San Pham 2",
+      "name": "San Pham 444444",
       "originalPrice": "20000000",
       "saleOffPrice": "",
-      "longDesc": "\nsnoiagnoangoenonganegeo",
-      "shortDesc": "\nsnoiagnoangoenonganegeo",
-      "feature": "\nsnoiagnoangoenonganegeo",
+      "longDesc": "snoiagnoangoenonganegeo",
+      "shortDesc": "snoiagnoangoenonganegeo",
+      "feature": "snoiagnoangoenonganegeo",
       "category": "1",
       "id": 7
+    },
+    {
+      "image": "http://res.cloudinary.com/dqsykuvvc/image/upload/v1658556623/wiqwxfhqzzz052sr3gyx.jpg",
+      "name": "duong2",
+      "originalPrice": "2000000",
+      "saleOffPrice": "",
+      "longDesc": "gnengwôngwiniwngnư",
+      "shortDesc": "ạgnengwngneo",
+      "feature": "ầlknfjạngngnenge",
+      "category": "4",
+      "id": 8
     }
   ],
   "category": [
