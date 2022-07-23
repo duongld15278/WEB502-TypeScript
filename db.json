@@ -32,6 +32,46 @@
       "description": "",
       "shortDescription": "",
       "id": 5
+    },
+    {
+      "image": "http://res.cloudinary.com/dqsykuvvc/image/upload/v1658544287/zntvesjgstqnvo5qzrrl.jpg",
+      "name": "San Pham 1",
+      "originalPrice": "20000000",
+      "saleOffPrice": "",
+      "longDesc": "sabgaognaohneonhl",
+      "shortDesc": "sabgaognaohneonhl",
+      "feature": "sabgaognaohneonhl",
+      "category": "1",
+      "id": 6
+    },
+    {
+      "image": "http://res.cloudinary.com/dqsykuvvc/image/upload/v1658544452/pbt3hz1spcd7e5j8jbac.jpg",
+      "name": "San Pham 2",
+      "originalPrice": "20000000",
+      "saleOffPrice": "",
+      "longDesc": "\nsnoiagnoangoenonganegeo",
+      "shortDesc": "\nsnoiagnoangoenonganegeo",
+      "feature": "\nsnoiagnoangoenonganegeo",
+      "category": "1",
+      "id": 7
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Điện thoại"
+    },
+    {
+      "id": 2,
+      "name": "Máy tính"
+    },
+    {
+      "id": 3,
+      "name": "Laptop"
+    },
+    {
+      "id": 4,
+      "name": "Máy ảnh"
     }
   ]
 }

@@ -30,8 +30,9 @@ router.on({
   "/admin/products/add": () => {
     print(AddProductPage)
   },
-  "/admin/products/edit/:id": () => {
-    print(EditProductPage)
+  '/admin/product/edit/:id': (data: any) => {
+    const id = +data.data.id
+    print(EditProductPage, id)
   },
 })
 router.resolve()
