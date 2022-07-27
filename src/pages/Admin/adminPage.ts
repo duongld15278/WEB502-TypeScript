@@ -1,12 +1,14 @@
 import { List } from "../../api/product";
+import { cate } from "../../api/category"
 import AdminHeader from "../../components/Header/Admin";
 import Sidebar from "../../components/Sidebar";
 import Product from "../../model/product";
 
 const AdminPage = {
     render: async () => {
-        const res = await List()
-        const data: Product[] = res.data
+        const res = await List();
+        const data: Product[] = res.data;
+        const listcate: Category = await cate();
         console.log(data)
         return /* html */`
         ${AdminHeader.render()}
@@ -27,9 +29,9 @@ const AdminPage = {
                     <div class="filter-cate">
                     <label for="category" class="">Danh muc san pham</label><br>
                     <select class="w-[300px] h-9 mt-3 rounded border-gray-300" name="category" id="category">
-                        <option value="1">Laptop</option>
-                        <option value="2">PC</option>
-                        <option value="3">Mobie</option>
+                        ${listcate.data.map((item) => `
+                        <option value="${item.id}">${item.name}</option>
+                        `)}
                     </select>
                     </div>
                 </div>

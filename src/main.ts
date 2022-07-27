@@ -5,6 +5,8 @@ import HomePage from './pages/Home'
 import AddProductPage from './pages/Admin/Product/add'
 import EditProductPage from './pages/Admin/Product/edit'
 import AdminPage from './pages/Admin/adminPage'
+import signin from './pages/register/signin'
+import signup from './pages/register/signup'
 
 const router = new Navigo('/', {linksSelector: "a"})
 
@@ -35,6 +37,13 @@ router.on({
     console.log(id);
     
     print(EditProductPage, id)
+  },
+
+  "/signin": () => {
+    print(signin)
+  },
+  "/signup": () => {
+    print(signup)
   },
 })
 router.resolve()
